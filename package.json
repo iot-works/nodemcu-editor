@@ -1,6 +1,6 @@
 {
   "name": "iot-dev",
-  "main": "./lib/iot-dev",
+  "main": "./lib/spark-dev",
   "version": "0.0.1",
   "description": "Professional, hackable IDE for IoT, based on Github's Atom & Particle IDE",
   "repository": "https://github.com/spark/spark-dev",
@@ -9,12 +9,24 @@
     "atom": ">0.50.0"
   },
   "dependencies": {
+    "atom-space-pen-views": "^2.0.3",
+    "fs-plus": "^2.0.4",
+    "glob": "^4.2.1",
+    "pathwatcher": "^3.3.3",
     "request": "*",
-    "serialport": "https://github.com/suda/node-serialport/archive/master.tar.gz"
+    "serialport": "https://github.com/suda/node-serialport/archive/master.tar.gz",
+    "spark": "^0.5.9",
+    "spark-dev-spec-stubs": "git://github.com/spark/spark-dev-spec-stubs.git#master",
+    "spark-dev-views": "git://github.com/spark/spark-dev-views.git#master",
+    "underscore.string": "*",
+    "validator": "*",
+    "when": "*",
+    "xtend": "*"
   },
   "packageDependencies": {
     "tool-bar": "0.1.7"
   },
+  
   "consumedServices": {
     "status-bar": {
       "versions": {
