@@ -10,7 +10,7 @@
  	<string>6.0</string>
  	<key>CFBundleName</key>
 -	<string>Atom</string>
-+	<string>Particle Dev</string>
++	<string>IoT Dev</string>
  	<key>CFBundlePackageType</key>
  	<string>APPL</string>
  	<key>CFBundleDevelopmentRegion</key>

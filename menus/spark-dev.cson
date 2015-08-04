@@ -1,0 +1,8 @@
+'menu': [
+  {
+    'label': 'IoT',
+    'submenu': []
+  }
+],
+'context-menu':
+  'atom-workspace': []

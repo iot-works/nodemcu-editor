@@ -17,8 +17,7 @@ module.exports = (grunt) ->
       tasks += 'create-windows-installer ' if process.platform is 'win32'
       tasks += 'codesign publish-build'
     else
-#      tasks = 'download-atom-shell download-atom-shell-chromedriver build set-version generate-asar '
-      tasks = ' download-atom-shell-chromedriver build set-version generate-asar '
+      tasks = 'download-atom-shell download-atom-shell-chromedriver build set-version generate-asar '
 
       if not grunt.option('no-codesign')
         tasks += 'codesign '

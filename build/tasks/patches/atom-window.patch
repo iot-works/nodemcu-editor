@@ -5,7 +5,7 @@
      options =
        show: false
 -      title: 'Atom'
-+      title: 'Particle Dev'
++      title: 'IoT Dev'
        'web-preferences':
          'direct-write': true
          'subpixel-font-scaling': false
