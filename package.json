@@ -1,0 +1,31 @@
+{
+  "name": "iot-dev",
+  "main": "./lib/iot-dev",
+  "version": "0.0.1",
+  "description": "Professional, hackable IDE for IoT, based on Github's Atom & Particle IDE",
+  "repository": "https://github.com/spark/spark-dev",
+  "license": "Apache-2.0",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "request": "*",
+    "serialport": "https://github.com/suda/node-serialport/archive/master.tar.gz"
+  },
+  "packageDependencies": {
+    "tool-bar": "0.1.7"
+  },
+  "consumedServices": {
+    "status-bar": {
+      "versions": {
+        "^1.0.0": "consumeStatusBar"
+      }
+    },
+    "tool-bar": {
+      "versions": {
+        "^0.1.0": "consumeToolBar"
+      }
+    }
+  },
+  "readme": "ERROR: No README data found!"
+}
