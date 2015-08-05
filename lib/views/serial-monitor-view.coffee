@@ -1,6 +1,6 @@
 {View} = require 'atom-space-pen-views'
 {Disposable, CompositeDisposable} = require 'atom'
-{MiniEditorView} = require 'spark-dev-views'
+MiniEditorView = require './mini-editor-view'
 $ = null
 $$ = null
 SettingsHelper = null
