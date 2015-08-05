@@ -1,8 +1,9 @@
 module.exports =
   consumeStatusBar: (statusBar) ->
-    @statusView.addTiles statusBar
+#    @statusView.addTiles statusBar
     # @statusBarTile = statusBar.addLeftTile(item: @statusView, priority: 100)
-    @statusView.updateLoginStatus()
+#    @statusView.updateLoginStatus()
+    console.log statusBar
 
   consumeToolBar: (toolBar) ->
     @toolBar = toolBar 'spark-dev-tool-bar'
@@ -44,7 +45,3 @@ module.exports =
       iconset: 'ion'
 
     @updateToolbarButtons()
-
-  # Require view's module and initialize it
-  initView: (name) ->
-    console.log(name)
