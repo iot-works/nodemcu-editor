@@ -1,8 +1,15 @@
+CompositeDisposable = null
+
 module.exports =
 
   activate: (state) ->
     @StatusView ?= require './views/status-bar-view'
     @statusView = new @StatusView()
+    {CompositeDisposable, Emitter} = require 'atom'
+    @disposables = new CompositeDisposable
+
+    @disposables.add atom.commands.add 'atom-workspace',
+      'spark-dev:show-serial-monitor': => @showSerialMonitor()
 
   consumeStatusBar: (statusBar) ->
     @statusView.addTiles statusBar
@@ -42,3 +49,24 @@ module.exports =
       callback: 'spark-dev:show-serial-monitor'
       tooltip: 'Show serial monitor'
       iconset: 'ion'
+
+  showSerialMonitor: ->
+    @serialMonitorView = null
+    @openPane 'serial-monitor'
+
+  openPane: (uri) ->
+    uri = 'spark-dev://editor/' + uri
+    pane = atom.workspace.paneForURI uri
+
+    if pane?
+      pane.activateItemForURI uri
+    else
+      if atom.workspace.getPanes().length == 1
+        pane = atom.workspace.getActivePane().splitDown()
+      else
+        panes = atom.workspace.getPanes()
+        pane = panes.pop()
+        pane = pane.splitRight()
+
+      pane.activate()
+      atom.workspace.open uri, searchAllPanes: true
