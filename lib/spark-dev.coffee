@@ -18,19 +18,14 @@ module.exports =
       callback: 'spark-dev:flash-cloud'
       tooltip: 'Compile and upload code using cloud'
       iconset: 'ion'
-    @compileButton = @toolBar.addButton
-      icon: 'checkmark-circled'
-      callback: 'spark-dev:compile-cloud'
-      tooltip: 'Compile and show errors if any'
-      iconset: 'ion'
 
     @toolBar.addSpacer()
 
     @toolBar.addButton
       icon: 'document-text'
       callback: ->
-        require('shell').openExternal('http://docs.spark.io/')
-      tooltip: 'Opens reference at docs.spark.io'
+        require('shell').openExternal('https://github.com/nodemcu/nodemcu-firmware/wiki')
+      tooltip: 'Opens NodeMCU Document'
       iconset: 'ion'
     @coreButton = @toolBar.addButton
       icon: 'pinpoint'
