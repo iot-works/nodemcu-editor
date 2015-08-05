@@ -47,5 +47,3 @@ module.exports =
       callback: 'spark-dev:show-serial-monitor'
       tooltip: 'Show serial monitor'
       iconset: 'ion'
-
-    @updateToolbarButtons()
