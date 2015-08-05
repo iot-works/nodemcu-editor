@@ -1,12 +1,16 @@
 module.exports =
+
+  activate: (state) ->
+    @StatusView ?= require './views/status-bar-view'
+    @statusView = new @StatusView()
+
   consumeStatusBar: (statusBar) ->
-#    @statusView.addTiles statusBar
+    @statusView.addTiles statusBar
     # @statusBarTile = statusBar.addLeftTile(item: @statusView, priority: 100)
 #    @statusView.updateLoginStatus()
-    console.log statusBar
 
   consumeToolBar: (toolBar) ->
-    @toolBar = toolBar 'spark-dev-tool-bar'
+    @toolBar = toolBar 'iot-dev-tool-bar'
 
     @toolBar.addSpacer()
     @flashButton = @toolBar.addButton
