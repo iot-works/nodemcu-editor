@@ -5,7 +5,7 @@
    return if process.env.ATOM_HOME
 
 -  atomHome = path.join(app.getHomeDir(), '.atom')
-+  atomHome = path.join(app.getHomeDir(), '.particledev')
++  atomHome = path.join(app.getHomeDir(), '.iotdev')
    try
      atomHome = fs.realpathSync(atomHome)
    process.env.ATOM_HOME = atomHome
