@@ -16,7 +16,7 @@ module.exports =
       type: 'separator'
     },{
       label: 'Show serial monitor',
-      command: 'spark-dev:show-serial-monitor'
+      command: 'iot-dev:show-serial-monitor'
     }]
 
     # Refresh UI

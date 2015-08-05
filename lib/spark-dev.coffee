@@ -1,4 +1,6 @@
 CompositeDisposable = null
+Emitter = null
+_s = null
 
 module.exports =
 
@@ -7,14 +9,47 @@ module.exports =
     @statusView = new @StatusView()
     {CompositeDisposable, Emitter} = require 'atom'
     @disposables = new CompositeDisposable
+    @emitter = new Emitter
+    atom.sparkDev =
+      emitter: @emitter
 
     @disposables.add atom.commands.add 'atom-workspace',
-      'spark-dev:show-serial-monitor': => @showSerialMonitor()
+      'iot-dev:show-serial-monitor': => @showSerialMonitor()
+      'iot-dev:setup-wifi': => @setupWifi()
+
+    url = require 'url'
+    atom.workspace.addOpener (uriToOpen) =>
+      console.log(uriToOpen)
+      try
+        {protocol, host, pathname} = url.parse(uriToOpen)
+      catch error
+        return
+
+      return unless protocol is 'iot-dev:'
+
+      try
+        console.log pathname.substr(1)
+        @initView pathname.substr(1)
+      catch
+        return
+
+  initView: (name) ->
+    _s ?= require 'underscore.string'
+
+    name += '-view'
+    className = ''
+    for part in name.split '-'
+      className += _s.capitalize part
+
+    @[className] ?= require './views/' + name
+    key = className.charAt(0).toLowerCase() + className.slice(1)
+    console.log(className)
+    @[key] ?= new @[className]()
+    @[key]
+
 
   consumeStatusBar: (statusBar) ->
     @statusView.addTiles statusBar
-    # @statusBarTile = statusBar.addLeftTile(item: @statusView, priority: 100)
-#    @statusView.updateLoginStatus()
 
   consumeToolBar: (toolBar) ->
     @toolBar = toolBar 'iot-dev-tool-bar'
@@ -22,7 +57,7 @@ module.exports =
     @toolBar.addSpacer()
     @flashButton = @toolBar.addButton
       icon: 'flash'
-      callback: 'spark-dev:flash-cloud'
+      callback: 'iot-dev:flash-cloud'
       tooltip: 'Compile and upload code using cloud'
       iconset: 'ion'
 
@@ -34,28 +69,27 @@ module.exports =
         require('shell').openExternal('https://github.com/nodemcu/nodemcu-firmware/wiki')
       tooltip: 'Opens NodeMCU Document'
       iconset: 'ion'
-    @coreButton = @toolBar.addButton
-      icon: 'pinpoint'
-      callback: 'spark-dev:select-device'
-      tooltip: 'Select which device you want to work on'
-      iconset: 'ion'
     @wifiButton = @toolBar.addButton
       icon: 'wifi'
-      callback: 'spark-dev:setup-wifi'
+      callback: 'iot-dev:setup-wifi'
       tooltip: 'Setup device\'s WiFi credentials'
       iconset: 'ion'
     @toolBar.addButton
       icon: 'usb'
-      callback: 'spark-dev:show-serial-monitor'
+      callback: 'iot-dev:show-serial-monitor'
       tooltip: 'Show serial monitor'
       iconset: 'ion'
+
+
+  setupWifi: ->
+    console.log("setup WIFI")
 
   showSerialMonitor: ->
     @serialMonitorView = null
     @openPane 'serial-monitor'
 
   openPane: (uri) ->
-    uri = 'spark-dev://editor/' + uri
+    uri = 'iot-dev://editor/' + uri
     pane = atom.workspace.paneForURI uri
 
     if pane?
