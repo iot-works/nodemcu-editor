@@ -72,7 +72,7 @@ module.exports =
     @wifiButton = @toolBar.addButton
       icon: 'wifi'
       callback: 'iot-dev:setup-wifi'
-      tooltip: 'Setup device\'s WiFi credentials'
+      tooltip: 'Setup device\'s WiFi'
       iconset: 'ion'
     @toolBar.addButton
       icon: 'usb'
