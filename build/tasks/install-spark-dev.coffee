@@ -47,6 +47,7 @@ module.exports = (grunt) ->
       installDependencies done
     else
       # Download the release
+      console.log 'Download Release'
       tarballUrl = 'https://github.com/spark/spark-dev/archive/v' + particleDevVersion + '.tar.gz'
       tarballPath = path.join(workDir, 'sparkdev.tar.gz')
 

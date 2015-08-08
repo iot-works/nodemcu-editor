@@ -12,9 +12,11 @@
     "atom-space-pen-views": "^2.0.3",
     "fs-plus": "^2.0.4",
     "glob": "^4.2.1",
+    "node-wifiscanner": "^0.2.1",
     "pathwatcher": "^3.3.3",
     "request": "*",
     "serialport": "https://github.com/suda/node-serialport/archive/master.tar.gz",
+    "spark-dev-views": "git://github.com/spark/spark-dev-views.git#master",
     "underscore.string": "*",
     "validator": "*",
     "when": "*",
@@ -23,7 +25,6 @@
   "packageDependencies": {
     "tool-bar": "0.1.7"
   },
-
   "consumedServices": {
     "status-bar": {
       "versions": {

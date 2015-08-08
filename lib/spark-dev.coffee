@@ -72,7 +72,7 @@ module.exports =
     @wifiButton = @toolBar.addButton
       icon: 'wifi'
       callback: 'iot-dev:setup-wifi'
-      tooltip: 'Setup device\'s WiFi'
+      tooltip: 'Setup NodeMCU WiFi'
       iconset: 'ion'
     @toolBar.addButton
       icon: 'usb'
@@ -82,7 +82,9 @@ module.exports =
 
 
   setupWifi: ->
-    console.log("setup WIFI")
+    @setupWifiView = null
+    @openPane 'setup-wifi'
+    @setupWifiView.show()
 
   showSerialMonitor: ->
     @serialMonitorView = null
