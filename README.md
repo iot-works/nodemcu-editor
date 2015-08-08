@@ -20,4 +20,8 @@ Process
      
 1.Install or Uninstall Package, Change build/tasks/inject-packages.coffee
 
-Based & Inspired By [Spark-dev](https://github.com/spark/spark-dev) & Atom
+Based & Inspired By [Spark-dev](https://github.com/spark/spark-dev) & [Atom](http://atom.io)
+
+##LICENSE
+
+MIT
