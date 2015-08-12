@@ -17,6 +17,9 @@ module.exports =
       'iot-dev:show-serial-monitor': => @showSerialMonitor()
       'iot-dev:setup-wifi': => @setupWifi()
 
+    @emitter.on 'spark-dev:enter-wifi-credentials', (event) =>
+      @enterWifiCredentials(event.port, event.ssid, event.security)
+
     url = require 'url'
     atom.workspace.addOpener (uriToOpen) =>
       console.log(uriToOpen)
@@ -89,6 +92,15 @@ module.exports =
   showSerialMonitor: ->
     @serialMonitorView = null
     @openPane 'serial-monitor'
+
+  enterWifiCredentials: (port, ssid=null, security=null) -> @loginRequired =>
+    if !port
+      return
+
+    @wifiCredentialsView = null
+    @initView 'wifi-credentials'
+    @wifiCredentialsView.port = port
+    @wifiCredentialsView.show(ssid, security)
 
   openPane: (uri) ->
     uri = 'iot-dev://editor/' + uri

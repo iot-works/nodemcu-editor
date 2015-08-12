@@ -46,12 +46,12 @@ module.exports =
     confirmed: (item) ->
       @hide()
       if item.security
-        atom.sparkDev.emitter.emit 'spark-dev:enter-wifi-credentials',
+        atom.sparkDev.emitter.emit 'iot-dev:enter-wifi-credentials',
           port: @port
           ssid: item.ssid
           security: item.security
       else
-        atom.sparkDev.emitter.emit 'spark-dev:enter-wifi-credentials',
+        atom.sparkDev.emitter.emit 'iot-dev:enter-wifi-credentials',
           port: @port
 
     getPlatform: ->
