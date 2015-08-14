@@ -16,6 +16,7 @@ module.exports =
     @disposables.add atom.commands.add 'atom-workspace',
       'iot-dev:show-serial-monitor': => @showSerialMonitor()
       'iot-dev:setup-wifi': => @setupWifi()
+      'iot-dev:read-mac': => @readMac()
 
     @emitter.on 'spark-dev:enter-wifi-credentials', (event) =>
       @enterWifiCredentials(event.port, event.ssid, event.security)
@@ -82,7 +83,11 @@ module.exports =
       callback: 'iot-dev:show-serial-monitor'
       tooltip: 'Show serial monitor'
       iconset: 'ion'
-
+    @toolBar.addButton
+      icon: 'ipad'
+      callback: 'iot-dev:read-mac'
+      tooltip: 'Read MAC Address'
+      iconset: 'ion'
 
   setupWifi: ->
     @setupWifiView = null
@@ -92,6 +97,10 @@ module.exports =
   showSerialMonitor: ->
     @serialMonitorView = null
     @openPane 'serial-monitor'
+
+  readMac: ->
+    @serialMonitorView = null
+    @openPane 'read-mac'
 
   enterWifiCredentials: (port, ssid=null, security=null) -> @loginRequired =>
     if !port
