@@ -4,7 +4,7 @@ shell = null
 $ = null
 SettingsHelper = null
 spark = null
-FS = null
+ESP = null
 
 module.exports =
   class StatusBarView extends View
@@ -16,13 +16,16 @@ module.exports =
     initialize: (serializeState) ->
       {$} = require('atom-space-pen-views')
       {CompositeDisposable} = require 'atom'
-      FS = require('fs');
+      ESP = require('esptoolpy-js');
 
       @disposables = new CompositeDisposable
       @workspaceElement = atom.views.getView(atom.workspace)
 
       @getAttributesPromise = null
       @interval = null
+      ESP.read_mac '/dev/cu.SLAB_USBtoUART', (result) ->
+        console.log result.toString()
+        return
 
     destroy: ->
 

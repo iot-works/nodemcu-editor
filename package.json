@@ -20,6 +20,7 @@
     "underscore.string": "*",
     "validator": "*",
     "when": "*",
+    "esptoolpy-js": "*  ",
     "xtend": "*"
   },
   "packageDependencies": {
