@@ -4,9 +4,11 @@
 
 Process
 
-1.[ESPTool.js](https://github.com/phodal/esptool.js)(Ongoing)
+1. Use ESPTool.py
 
-2.WifiScanner(try)
+2. WifiScanner(try)
+
+3. <del>[ESPTool.js](https://github.com/phodal/esptool.js)(Ongoing)</del>
 
 ##Build
 
